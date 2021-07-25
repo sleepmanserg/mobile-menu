@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home
+		</title>
+		<!-- Mobile Specific Meta Tag-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<!--Google font Roboto-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@600&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+		<!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+	</head>
+	<style>
+		
+		body {
+			margin: 0;
+			padding: 0;
+			position: relative;
+		}
+		* ::after,
+		* ::before {
+			box-sizing: border-box;
+		}
+		.menu__button {
+			width: 40px;
+			height: 40px;
+			background-color: #000;
+			cursor: pointer;
+		}
+		
+		.menu__button--open {
+			background-color: seagreen;
+		}
+		
+		.menu__list {
+			/* display: none; */
+			background-color: #000;
+			width: 50%;
+			position: absolute;
+			left: 0;
+			top: 60px;
+			margin-top: 0;
+			padding-top: 60px;
+			padding-bottom: 60px;
+			transition: .25s;
+			transform: translateX(-100%);
+			opacity: 0;
+			visibility: hidden;
+		}
+		
+		.menu__link {
+			color: #fff;
+			text-decoration: none;
+			
+		}
+		
+		.menu__list--open {
+			transform: translateX(0);
+			opacity: 1;
+			visibility: visible;
+		}
+	</style>
+	<body>
+		
+		<nav class="header-menu menu">
+			<button class="menu__button" type="button" aria-expanded="false" aria-controls="menu__list">
+				
+			</button>
+			<ul class='menu__list' id="menu__list">
+				<li class="menu__item">
+					<a class="menu__link" href='#'>Link1</a>
+				</li>
+				<li class="menu__item">
+					<a class="menu__link" href='#'>Link2</a>
+				</li>
+				<li class="menu__item">
+					<a class="menu__link" href='#'>Link3</a>
+				</li>
+				<li class="menu__item">
+					<a class="menu__link" href='#'>Link3</a>
+				</li>
+			</ul>
+		</nav>
+		
+		<script>
+			(() => {
+				const menuButton = document.querySelector('.menu__button');
+				const menuList = document.querySelector('.menu__list');
+				
+				menuButton.addEventListener('click', () => {
+					let expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+					
+					menuButton.setAttribute('aria-expanded', !expanded);
+					menuButton.classList.toggle('menu__button--open');
+					menuList.classList.toggle('menu__list--open');
+				});
+			})();
+		</script>
+	</body>
+</html>
